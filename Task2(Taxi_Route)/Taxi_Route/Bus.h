@@ -6,14 +6,17 @@ class Bus
 {
 private:
 	string name;
-	Route& route;
+	Route route;
 	set<Man> men;
 	int total_number_of_seats;
 	int number_of_free_seats;
-	BusStop current_busStop;
+	BusStop* current_busStop;
 	DIRECT direction;//Направление движения
 public:
-	Bus(Route& route);
+	Bus(const Route& route);
 	~Bus(void);
+
+	BusStop* GetCurrentBusStop() const;
+	void Move();
 };
 

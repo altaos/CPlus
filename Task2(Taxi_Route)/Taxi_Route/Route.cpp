@@ -2,7 +2,7 @@
 #include "Route.h"
 
 
-Route::Route(string name, map<string, BusStop>& busStops)
+Route::Route(string name, map<string, BusStop*>& busStops)
 {
 	route_iterator = busStops.begin;
 	this->name = name;
@@ -27,6 +27,10 @@ Route& Route::operator=(const Route& r)
 	return *this;
 }
 
+Route::Route(void)
+{
+}
+
 Route::~Route(void)
 {
 }
@@ -38,7 +42,7 @@ string Route::GetName() const
 }
 
 //Возвращает итератор на текущую остановку
-map<string, BusStop>::iterator Route::GetIterator() const
+map<string, BusStop*>::iterator Route::GetIterator() const
 {
 	return route_iterator;
 }

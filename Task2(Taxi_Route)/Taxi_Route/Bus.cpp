@@ -2,13 +2,26 @@
 #include "Bus.h"
 
 
-Bus::Bus(Route& route)
+Bus::Bus(const Route& route)
 {
-	this->route = route;
-	direction = FOWARD;
+	this->route = route;//Копирование маршрута
+	current_busStop = this->route.GetIterator()->second;//Текущая остановка - первая в маршруте
+	direction = FOWARD;//Направление движения
 }
 
 
 Bus::~Bus(void)
 {
+}
+
+//Возврат текущей остановки
+BusStop* Bus::GetCurrentBusStop() const
+{
+	return current_busStop;
+}
+
+void Bus::Move()
+{
+	route.ChangeIterator(direction);
+	cout<<"Bus number is "<<name<<" Current busStop is "<<route.GetIterator()->first<<" Direction is "<<direction<<endl;
 }
