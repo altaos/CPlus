@@ -7,6 +7,10 @@ BusStop::BusStop(string name)
 	this->name = name;
 }
 
+BusStop::BusStop()
+{
+	
+}
 
 BusStop::~BusStop(void)
 {

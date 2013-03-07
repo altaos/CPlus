@@ -2,8 +2,6 @@
 
 #include"Route.h"
 
-enum DIRECT { FOWARD, REVERSE};
-
 class Bus
 {
 private:
@@ -15,7 +13,7 @@ private:
 	BusStop current_busStop;
 	DIRECT direction;//Направление движения
 public:
-	Bus(Route& route, DIRECT direction);
+	Bus(Route& route);
 	~Bus(void);
 };
 

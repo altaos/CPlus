@@ -2,14 +2,10 @@
 #include "Bus.h"
 
 
-Bus::Bus(Route& route, DIRECT direction)
+Bus::Bus(Route& route)
 {
 	this->route = route;
-	switch(direction) 
-	{
-	case FOWARD:
-		//current_busStop = route.
-	}
+	direction = FOWARD;
 }
 
 
