@@ -4,7 +4,7 @@
 
 Route::Route(string name, map<string, BusStop*>& busStops)
 {
-	route_iterator = busStops.begin;
+	route_iterator = busStops.begin();
 	this->name = name;
 	this->busStops = busStops;
 }
@@ -48,14 +48,17 @@ map<string, BusStop*>::iterator Route::GetIterator() const
 }
 
 //Изменение итератора
-bool Route::ChangeIterator(DIRECT& direct)
+void Route::ChangeIterator(DIRECT& direct)
 {
 	switch (direct)
 	{
 	case FOWARD: 
 		route_iterator++;
 		if(route_iterator == busStops.end())
+		{
 			direct = REVERSE;
+			route_iterator--;
+		}
 		break;
 	case REVERSE: 
 		route_iterator--;
@@ -65,4 +68,10 @@ bool Route::ChangeIterator(DIRECT& direct)
 	default:
 		break;
 	}
+}
+
+//Возвращает список остановок
+const map<string, BusStop*>* Route::GetBusStops() const
+{
+	return &busStops;
 }

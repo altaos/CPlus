@@ -24,6 +24,26 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//Создание автобуса
 	Bus bus(new_route);
+	Bus bus2(new_route);
+	cout<<"==============bus1=================================="<<endl;
+	bus.Move();
+	bus.Move();
+	bus.Move();
+	bus.Move();
+	bus.Move();
+	cout<<"==============bus2=================================="<<endl;
+	bus2.Move();
+	bus2.Move();
+	cout<<"==============bus1=================================="<<endl;
+	bus.Move();
+	bus.Move();
+	bus.Move();
+	cout<<"==============creating men=================================="<<endl;
+	Man man("BusStop3");
+	busStops["BusStop2"]->AddMan(&man);
+	bs2.PrintSetMen();
+
+	cin.ignore();
 
 	return 0;
 }

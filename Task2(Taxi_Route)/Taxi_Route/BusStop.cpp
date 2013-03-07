@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "BusStop.h"
 
-
 BusStop::BusStop(string name)
 {
 	this->name = name;
+
 }
 
 BusStop::BusStop()
@@ -16,9 +16,15 @@ BusStop::~BusStop(void)
 {
 }
 
-bool BusStop::AddMan(Man man)
+//ƒобавление человека на остановку
+void BusStop::AddMan(Man* man)
 {
 	men.insert(man);
+}
 
-	return true;
+//¬ыводит на консоль список людей на остановке
+void BusStop::PrintSetMen() const
+{
+	for(set<Man*>::iterator it = men.begin(); it != men.end(); it++)
+		(*it)->Print();
 }

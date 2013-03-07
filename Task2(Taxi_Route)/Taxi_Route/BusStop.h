@@ -6,13 +6,14 @@
 class BusStop
 {
 private:
-	string name;//Название остановки
-	set<Man> men;//Список людей на остановке
+	string name;		//Название остановки
+	set<Man*> men;		//Список людей на остановке
 public:
 	BusStop(string name);
 	BusStop(void);
 	~BusStop(void);
 
-	bool AddMan(Man man);//Добавление человека на остановку
+	void AddMan(Man* man);		//Добавление человека на остановку
+	void PrintSetMen() const;	//Выводит на консоль список людей на остановке
 };
 
