@@ -43,6 +43,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	busStops["BusStop2"]->AddMan(&man);
 	bs2.PrintSetMen();
 
+	cout<<"Test"<<endl;
+
 	cin.ignore();
 
 	return 0;

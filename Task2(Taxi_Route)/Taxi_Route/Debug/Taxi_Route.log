@@ -1,18 +1,81 @@
-﻿Build started 07.03.2013 21:53:06.
+﻿Build started 10.03.2013 12:23:17.
      1>Project "C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Taxi_Route\Taxi_Route.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Taxi_Route.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Taxi_Route.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Taxi_Route.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Bus.cpp BusStop.cpp Man.cpp Route.cpp Taxi_Route.cpp
          Taxi_Route.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Debug\Taxi_Route.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Debug\Taxi_Route.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Debug\Taxi_Route.lib" /MACHINE:X86 Debug\Bus.obj
-         Debug\BusStop.obj
-         Debug\Man.obj
-         Debug\Route.obj
-         Debug\stdafx.obj
-         Debug\Taxi_Route.obj
-         Taxi_Route.vcxproj -> C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Debug\Taxi_Route.exe
-     1>Done Building Project "C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Taxi_Route\Taxi_Route.vcxproj" (Build target(s)).
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C2143: syntax error : missing ',' before '&'
+         Route.cpp
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C2143: syntax error : missing ',' before '&'
+         Man.cpp
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(9): error C2146: syntax error : missing ';' before identifier 'name'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(10): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(10): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(10): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(12): error C2061: syntax error : identifier 'string'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(13): error C2535: 'BusStop::BusStop(void)' : member function already defined or declared
+                 c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(12) : see declaration of 'BusStop::BusStop'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\busstop.h(16): error C2061: syntax error : identifier 'Man'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(11): error C2146: syntax error : missing ';' before identifier 'name'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2039: 'iterator' : is not a member of '`global namespace''
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(15): error C2061: syntax error : identifier 'string'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(17): error C2535: 'Route::Route(void)' : member function already defined or declared
+                 c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(15) : see declaration of 'Route::Route'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): error C2146: syntax error : missing ';' before identifier 'GetName'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): warning C4183: 'GetName': missing return type; assumed to be a member function returning 'int'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2039: 'iterator' : is not a member of '`global namespace''
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.cpp(29): error C2039: 'GetBusStops' : is not a member of 'Route'
+                 c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(9) : see declaration of 'Route'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.cpp(29): error C2227: left of '->begin' must point to class/struct/union/generic type
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.cpp(30): error C2039: 'GetBusStops' : is not a member of 'Route'
+                 c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(9) : see declaration of 'Route'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.cpp(30): error C2227: left of '->end' must point to class/struct/union/generic type
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.cpp(30): fatal error C1903: unable to recover from previous error(s); stopping compilation
+         BusStop.cpp
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(11): error C2146: syntax error : missing ';' before identifier 'name'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(12): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2039: 'iterator' : is not a member of '`global namespace''
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(13): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(15): error C2061: syntax error : identifier 'string'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(17): error C2535: 'Route::Route(void)' : member function already defined or declared
+                 c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(15) : see declaration of 'Route::Route'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): error C2146: syntax error : missing ';' before identifier 'GetName'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(21): warning C4183: 'GetName': missing return type; assumed to be a member function returning 'int'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2039: 'iterator' : is not a member of '`global namespace''
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(22): error C2238: unexpected token(s) preceding ';'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C2143: syntax error : missing ';' before '<'
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\route.h(24): error C2238: unexpected token(s) preceding ';'
+         Bus.cpp
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\user\documents\github\cplus\task2(taxi_route)\taxi_route\man.h(19): error C2143: syntax error : missing ',' before '&'
+         Generating Code...
+     1>Done Building Project "C:\Users\User\Documents\GitHub\CPlus\Task2(Taxi_Route)\Taxi_Route\Taxi_Route.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.14
+Time Elapsed 00:00:04.07
