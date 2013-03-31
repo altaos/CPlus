@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B464F87F-C527-4DAA-AD94-967ECAE7426F}</ProjectGuid>
+    <ProjectGuid>{EB9DFD24-627F-414B-B1E0-F7B5ED5CB7B5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Taxi_Route</RootNamespace>
   </PropertyGroup>
@@ -77,17 +77,25 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BigBus.h" />
     <ClInclude Include="Bus.h" />
     <ClInclude Include="BusStop.h" />
+    <ClInclude Include="City.h" />
+    <ClInclude Include="LittleBus.h" />
     <ClInclude Include="Man.h" />
+    <ClInclude Include="MiddleBus.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BigBus.cpp" />
     <ClCompile Include="Bus.cpp" />
     <ClCompile Include="BusStop.cpp" />
+    <ClCompile Include="City.cpp" />
+    <ClCompile Include="LittleBus.cpp" />
     <ClCompile Include="Man.cpp" />
+    <ClCompile Include="MiddleBus.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -1,26 +1,30 @@
 #pragma once
 
-#include"BusStop.h"
+#include<string>
 #include<map>
+#include<set>
+#include<vector>
+#include"BusStop.h"
 
-enum DIRECT { FOWARD, REVERSE};
+using namespace std;
+
+class BusStop;
 
 class Route
 {
 private:
-	string name;
-	map<string, BusStop*> busStops;								//Список остановок
-	map<string, BusStop*>::iterator route_iterator;				//Итератор, указывающий на текущую остановку
-public:
-	Route(string name, map<string, BusStop*>& busStops);
-	Route(const Route& r);
-	Route(void);
-	~Route(void);
-	Route& Route::operator=(const Route& r);
+	string name;													//Номер маршрута
+	map<string, BusStop*> busStops;									//Коллекция остановок <название остановки, остановка*>
+	set<string> busStopsNames;										//Список названий остановок маршрута
 
-	string GetName() const;										//Возвращает название маршрута
-	map<string, BusStop*>::iterator GetIterator() const;		//Возвращает итератор на текущую остановку
-	void ChangeIterator(DIRECT& direct);						//Изменение  итератора при передвижении автобуса
-	const map<string, BusStop*>* GetBusStops() const;			//Возвращает список остановок
+public:
+	Route(string name);
+	Route(string name, int* arr, int size, vector<BusStop*>* bStop);
+	~Route(void);
+
+	string GetName() const;
+	void AddBusStop(BusStop* busStop);								//Добавление остановки в маршрут
+	const map<string, BusStop*>* GetBusStops() const;				//Получить список остановок маршрута для чтения
+	const set<string>* GetBusStopsNames() const;					//Получить список названий остановок
 };
 

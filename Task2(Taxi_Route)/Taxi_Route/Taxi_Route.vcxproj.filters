@@ -27,13 +27,25 @@
     <ClInclude Include="Man.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BusStop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Route.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BusStop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Bus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BigBus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MiddleBus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LittleBus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="City.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,13 +59,25 @@
     <ClCompile Include="Man.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BusStop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Route.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BusStop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Bus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BigBus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MiddleBus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LittleBus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="City.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,24 +1,40 @@
 #pragma once
 
 #include"Route.h"
+#include <vector>
+
+class Man;
+class Route;
+
+enum Direct { Forward, Reverse};
 
 class Bus
 {
-private:
+protected:
 	string name;
-	Route route;				//Маршрут
-	set<Man*> men;				//Список людей в автобусе
-	int total_number_of_seats;	//Количество мест всего в автобусе
-	int number_of_free_seats;	//Количество свободных мест
-	BusStop* current_busStop;	//Текущая остановка
-	DIRECT direction;			//Направление движения
-public:
-	Bus(const Route& route);
-	~Bus(void);
+	Route* route;													//Маршрут
+	map<string, BusStop*>::const_iterator current_stop;				//Текущая остановка
+	Direct direction;												//Направление
+	int total_number_of_seats;										//Общее количество мест в автобусе
+	int number_of_free_seats;										//Количество свободных мест
+	vector<Man*> men;
 
-	BusStop* GetCurrentBusStop() const;	//Получить указатель на текущую остановку автобуса
-	void PrintSetMen() const;			//Вывести список пассажиров
-	void Move();						//Передвигает автобус на следующую остановку
-	//void CheckBusStop();				//Проверка текущей остановки пассажирами
+public:
+	Bus(Route* route, string name);
+	virtual ~Bus(void);
+
+	void Move();													//Передвижение автобуса на следующую остановку
+	int GetTotalNumberOfSeats() const;								//Получить общее количество мест
+	int GetNuberOfFreeSeats() const;								//Получить количество свободных мест
+	string GetName() const;											//Получить название автобуса
+	string GetCurrentBusStopName() const;								//Получить название текущей остановки
+	BusStop* GetCurrentBusStop();
+	string GetDirection() const;									//Получить направление движения автобус
+	void AddMan(Man* man);											//Добавить человека
+	void CheckPassengers();											//Проверить пассажиров при передвижении на новую остановку и выхо пассажиров
+	const set<string>* GetRoute() const;							//Получить список названий остановок маршрута
+
+	friend ostream& operator<<(istream& os, const Bus& bus);
 };
 
+ostream& operator<<(ostream& os, Bus& bus);

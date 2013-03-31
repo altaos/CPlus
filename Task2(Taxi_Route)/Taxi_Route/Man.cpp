@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Man.h"
 
-
 Man::Man(string goalBusStop)
 {
 	this->goalBusStop = goalBusStop;
@@ -13,24 +12,25 @@ Man::~Man(void)
 }
 
 //Получить конечную остановку
-string Man::GetGoalBusStop() const
+string Man::GetGoalStop() const
 {
 	return goalBusStop;
 }
 
-void Man::Print() const
+//Проверить, есть ли необходимая остановка в маршруте автобуса
+bool Man::CheckIsThereGoalBusStop(const set<string>* route)
 {
-	cout<<"### Goal: "<<goalBusStop<<endl;
+	set<string>::iterator it = route->begin();
+	while((*it).compare(goalBusStop) == 0 && it != route->end()) it++;
+	
+	return it != route->end();
 }
 
-//Проверка, есть ли в маршруте автобуса нужная остановка
-bool Man::CheckRoute(const Route& route) const
+//Проверить, является ли данноя остановка необходимой
+bool Man::IsItGoalBusStop(string busStop)
 {
-	map<string, BusStop*>::const_iterator it = route.GetBusStops()->begin();
-	while(it != route.GetBusStops()->end() && it->first != goalBusStop) it++;
+	if(goalBusStop.compare(busStop) == 0)
+		return true;
 
-	if(it == route.GetBusStops()->end)
-		return false;
-
-	return true;
+	return false;
 }

@@ -2,76 +2,47 @@
 #include "Route.h"
 
 
-Route::Route(string name, map<string, BusStop*>& busStops)
+Route::Route(string name)
 {
-	route_iterator = busStops.begin();
 	this->name = name;
-	this->busStops = busStops;
 }
 
-Route::Route(const Route& r)
+Route::Route(string name, int* arr, int size, vector<BusStop*>* bStop)
 {
-	name = r.name;
-	busStops = r.busStops;
-	route_iterator = busStops.begin();
-}
-
-Route& Route::operator=(const Route& r)
-{
-	if(this != &r)
+	this->name = name;
+	for(int i = 0; i < size; i++)
 	{
-		name = r.name;
-		busStops = r.busStops;
-		route_iterator = busStops.begin();
+		busStops.insert(pair<string, BusStop*>((*bStop)[arr[i]]->GetName(), (*bStop)[arr[i]]));
+		busStopsNames.insert((*bStop)[arr[i]]->GetName());
 	}
-	return *this;
-}
-
-Route::Route(void)
-{
 }
 
 Route::~Route(void)
 {
 }
 
-//Возвращает название маршрута
-string Route::GetName() const
+//Добавление остановки
+void Route::AddBusStop(BusStop* busStop)
 {
-	return name;
-}
-
-//Возвращает итератор на текущую остановку
-map<string, BusStop*>::iterator Route::GetIterator() const
-{
-	return route_iterator;
-}
-
-//Изменение итератора
-void Route::ChangeIterator(DIRECT& direct)
-{
-	switch (direct)
+	if(busStop != NULL)
 	{
-	case FOWARD: 
-		route_iterator++;
-		if(route_iterator == busStops.end())
-		{
-			direct = REVERSE;
-			route_iterator--;
-		}
-		break;
-	case REVERSE: 
-		route_iterator--;
-		if(route_iterator == busStops.begin())
-			direct = FOWARD;
-		break;
-	default:
-		break;
+		busStops.insert(pair<string, BusStop*>(busStop->GetName(), busStop));
+		busStopsNames.insert(busStop->GetName());
 	}
 }
 
-//Возвращает список остановок
 const map<string, BusStop*>* Route::GetBusStops() const
 {
 	return &busStops;
+}
+
+//Получить список названий остановок
+const set<string>* Route::GetBusStopsNames() const
+{
+	return &busStopsNames;
+}
+
+string Route::GetName() const
+{
+	return name;
 }

@@ -1,51 +1,81 @@
 // Taxi_Route.cpp : Defines the entry point for the console application.
 //
-#pragma once
+
 #include "stdafx.h"
-#include "Bus.h"
+#include <iostream>
+#include"City.h"
 
+using namespace std;
 
+#define N 15
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//Создаем остановки
-	BusStop bs1("BusStop1");
-	BusStop bs2("BusStop2");
-	BusStop bs3("BusStop3");
-	BusStop bs4("BusStop4");
+	City* city;
+	int menCount = 20;
+	int busCount = 5;
+	int deltaMen = 2;
+	int choice;
 
-	//Создаем map остановок и маршрут
-	map<string, BusStop*> busStops;
-	busStops.insert(pair<string, BusStop*>("BusStop1", &bs1));
-	busStops.insert(pair<string, BusStop*>("BusStop2", &bs2));
-	busStops.insert(pair<string, BusStop*>("BusStop3", &bs3));
-	busStops.insert(pair<string, BusStop*>("BusStop4", &bs4));
-	Route new_route("27", busStops);
+	bool isStarted = false;
 
-	//Создание автобуса
-	Bus bus(new_route);
-	Bus bus2(new_route);
-	cout<<"==============bus1=================================="<<endl;
-	bus.Move();
-	bus.Move();
-	bus.Move();
-	bus.Move();
-	bus.Move();
-	cout<<"==============bus2=================================="<<endl;
-	bus2.Move();
-	bus2.Move();
-	cout<<"==============bus1=================================="<<endl;
-	bus.Move();
-	bus.Move();
-	bus.Move();
-	cout<<"==============creating men=================================="<<endl;
-	Man man("BusStop3");
-	busStops["BusStop2"]->AddMan(&man);
-	bs2.PrintSetMen();
-
-	cout<<"Test"<<endl;
-
-	cin.ignore();
+	do
+	{
+		cout << "1. Bus count " << endl;
+		cout << "2. Start count of people " << endl;
+		cout << "3. Count of new people for every step " << endl;
+		if(!isStarted)
+			cout << "4. Start " << endl;
+		else
+			cout << "4. Next step " << endl;
+		cout << "5. Stop " << endl << endl;
+		cout << "6. Exit " << endl << endl;
+		cout << "Type command number " << endl << endl;
+		cin >> choice;
+		switch (choice)
+		{
+		case 1:
+			cout << "Bus count : ";
+			cin >> busCount;
+			break;
+		case 2:
+			cout << "Start count of people : ";
+			cin >> menCount;
+			break;
+		case 3:
+			cout << "Count of new people for every step : ";
+			cin >> deltaMen;
+			break;
+		case 4:
+			if(!isStarted)
+			{
+				isStarted = !isStarted;
+				city = new City;
+				city->CreatingBusStops();
+				city->CreatingRoutes();
+				city->CreatingBuses(busCount);
+				city->CreatingMen(menCount);
+				city->SetDeltaMen(deltaMen);
+			}
+			else
+			{
+				city->onTimer();
+			}
+			break;
+		case 5:
+			if(isStarted)
+			{
+				isStarted = !isStarted;
+				delete city;
+			}
+			break;
+		case 6:
+			if(isStarted)
+				delete city;
+			break;
+		}
+	}
+	while(choice != 6);
 
 	return 0;
 }
