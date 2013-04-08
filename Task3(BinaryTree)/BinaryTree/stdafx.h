@@ -10,6 +10,11 @@
 #include <stdio.h>
 #include <tchar.h>
 
+#include <string>
+#include <iostream>
+#include "Node.h"
+#include "Iterator.h"
+#include "BTree.h"
 
 
 // TODO: reference Insertitional headers your program requires here

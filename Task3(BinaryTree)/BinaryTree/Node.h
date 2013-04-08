@@ -1,8 +1,9 @@
 #pragma once
 
 template<class T>
-struct Node
+class Node
 {
+public:
 	T value;
 	Node *right, *left;
 
@@ -16,4 +17,5 @@ struct Node
 		this->value = value;
 		right = left = NULL;
 	}
+
 };

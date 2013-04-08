@@ -1,5 +1,5 @@
 #pragma once
-#include "Iterator.h"
+#include "stdafx.h"
 
 template<class T>
 class BTree
@@ -11,6 +11,7 @@ private:
 	void Insert(Node<T> **node, T value);
 	bool Remove(Node<T> **node, const T value);
 	void DeleteBTree(Node<T> **node);
+	void Print(Node<T> *node) const;
 
 public:
 	BTree(void);
@@ -23,6 +24,9 @@ public:
 	int Size() const;												//Получить количество элементов в дереве
 	Iterator<T> begin();
 	Iterator<T> end();
+	void Print() const;
+
+	typedef Iterator<T> iterator;
 };
 
 template<class T>
@@ -97,14 +101,16 @@ bool BTree<T>::Remove(Node<T> **node, const T value)
 		Node<T> *current;
 
 		//Если есть одна правая ветвь
-		if(!((*node)->left) && (*node)->right)
+		if(!((*node)->left))
+		//if(!((*node)->left) && (*node)->right)
 		{
 			current = (*node)->right;
 			delete *node;
 			*node = current;
 		}
 		//Если есть одна левая ветвь
-		else if(!((*node)->right) && (*node)->left)
+		else if(!((*node)->right))
+			//if(!((*node)->right) && (*node)->left)
 		{
 			current = (*node)->left;
 			delete *node;
@@ -188,4 +194,23 @@ Iterator<T> BTree<T>::end()
 {
 	Iterator<T> it(NULL);
 	return it;
+}
+
+template<class T>
+void BTree<T>::Print(Node<T> *node) const
+{
+	if(node == NULL) return;
+
+	Print(node->left);
+	cout<<node->value<<" ";
+	Print(node->right);
+}
+
+template<class T>
+void BTree<T>::Print() const
+{
+	if(root == NULL) return;
+
+	Print(root);
+	cout<<endl;
 }

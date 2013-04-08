@@ -10,6 +10,7 @@ private:
 	Node<T> *it;
 
 public:
+	Iterator() {}
 	Iterator(Node<T> *node) : it(node) { }
 
 	Iterator &operator++(int i)
