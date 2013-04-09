@@ -12,6 +12,8 @@ private:
 	bool BTree<T>::Remove(Node<T> *&node, const T value);
 	void DeleteBTree(Node<T> **node);
 	void Print(Node<T> *node) const;
+	void Insert(Node<T> *node);
+	Node<T> *SearchNode(T value);
 
 public:
 	BTree(void);
@@ -51,7 +53,7 @@ BTree<T>::~BTree(void)
 }
 
 //private Добавление в дерево
-template<class T>
+/*template<class T>
 void BTree<T>::Insert(Node<T> **node, T value)
 {
 	//Если узел пуст
@@ -72,13 +74,63 @@ void BTree<T>::Insert(Node<T> **node, T value)
 			Insert(&((*node)->left), value);
 		}
 	}
+}*/
+
+template<class T>
+void BTree<T>::Insert(Node<T> *node)
+{
+	if(!node)
+		return;
+
+	if(!root)
+	{
+		root = node;
+		root->parent = NULL;
+		count++;
+	}
+	else
+	{
+		if(node->parent == NULL)
+			node->parent = root;
+		
+		//вставляем  в левую ветвь
+		if(node->value < node->parent->value)
+		{
+			if(node->parent->left == NULL)
+			{
+				node->parent->left = node;
+				count++;
+			}
+			else
+			{
+				node->parent = node->parent->left;
+				Insert(node);
+			}
+		}
+		//вставляем в правую ветвь
+		else
+		{
+			if(node->parent->right == NULL)
+			{
+				node->parent->right = node;
+				count++;
+			}
+			else
+			{
+				node->parent = node->parent->right;
+				Insert(node);
+			}
+		}
+	}
 }
 
 //Добавление элемента в дерево
 template<class T>
 void BTree<T>::Insert(T value)
 {
-	Insert(&root, value);
+	//Insert(&root, value);
+	Node<T> *node = new Node<T>(value);
+	Insert(node);
 }
 
 //private Удаление элемента со значением value

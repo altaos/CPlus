@@ -9,7 +9,11 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int choice;
+	BTree<int> *tree = new BTree<int>();
+	tree->Insert(3);
+	tree->Insert(1);
+	tree->Insert(6);
+	/*int choice;
 	bool created = false;
 	BTree<int> *intTree = new BTree<int>();
 	BTree<string> *stringTree = new BTree<string>();
@@ -99,7 +103,7 @@ int _tmain(int argc, _TCHAR* argv[])
 						{
 							intTree->Remove(it);
 							break;
-						}*/
+						}
 					intTree->Print();
 				}
 				else
@@ -148,7 +152,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 		}
 	}
-	while (choice != 7);
+	while (choice != 7);*/
 
 	return 0;
 }
