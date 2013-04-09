@@ -25,9 +25,9 @@ public:
 		return *this;
 	}
 
-	T &operator*()
+	Node<T>* &operator*()
 	{
-		return it->value;
+		return it;
 	}
 
 	bool &operator==(const Iterator& it)
@@ -35,9 +35,9 @@ public:
 		return this->it == it;
 	}
 
-	bool &operator!=(const Iterator& it)
+	bool &operator!=(const Iterator& iter)
 	{
-		return this->it != it;
+		return *it != *iter;
 	}
 
 };

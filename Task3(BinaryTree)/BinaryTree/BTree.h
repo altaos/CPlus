@@ -20,6 +20,7 @@ public:
 
 	void Insert(T value);											//Вставка элемента в дерево
 	bool Remove(const T value);										//Удаление элемента из дерева по значению
+	bool Remove(Iterator<T> it);
 	void Clear();
 	int Size() const;												//Получить количество элементов в дереве
 	Iterator<T> begin();
@@ -143,6 +144,12 @@ bool BTree<T>::Remove(Node<T> **node, const T value)
 	}
 }
 
+template<class T>
+bool BTree<T>::Remove(Iterator<T> it)
+{
+	return Remove(it, (*it)->value);
+}
+
 //Удаление элемента из дерева
 template<class T>
 bool BTree<T>::Remove(const T value)
@@ -159,7 +166,7 @@ bool BTree<T>::Remove(const T value)
 template<class T>
 void BTree<T>::Clear()
 {
-	DeleteBTree(root);
+	DeleteBTree(&root);
 }
 
 //Получение количества элементов в дереве
@@ -173,7 +180,7 @@ int BTree<T>::Size() const
 template<class T>
 void BTree<T>::DeleteBTree(Node<T> **node)
 {
-	if(!(*node))
+	if((*node))
 	{
 		DeleteBTree(&((*node)->left));
 		DeleteBTree(&((*node)->right));

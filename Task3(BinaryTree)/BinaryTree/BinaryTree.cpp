@@ -20,7 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		if(!created)
 		{
 			cout<< "1. Int tree" << endl;
-			cout<< "2. String tree" << endl;
+			cout<< "2. String tree" << endl<<endl;
 
 			cin>>choice;
 			switch (choice)
@@ -42,16 +42,16 @@ int _tmain(int argc, _TCHAR* argv[])
 		else
 		{
 			if(flag == 1)
-				cout<<"Int tree"<<endl;
+				cout<<"Int tree"<<endl<<endl;
 			if(flag == 2)
-				cout<<"String tree"<<endl;
+				cout<<"String tree"<<endl<<endl;
 
 			cout<<"1. Insert element"<<endl;
 			cout<<"2. Remove element"<<endl;
 			cout<<"3. Print tree"<<endl;
 			cout<<"4. Clear tree"<<endl;
 			cout<<"5. Count"<<endl;
-			cout<<"6. Main menu"<<endl;
+			cout<<"6. Main menu"<<endl<<endl;
 
 			cin>>choice;
 
@@ -63,14 +63,14 @@ int _tmain(int argc, _TCHAR* argv[])
 					int element;
 					cin>>element;
 					intTree->Insert(element);
-					cout<<"Int::Element was inserted"<<endl;
+					cout<<"Int::Element was inserted"<<endl<<endl;
 				}
 				else
 				{
 					string element;
 					cin>>element;
 					stringTree->Insert(element);
-					cout<<"String::Element was inserted"<<endl;
+					cout<<"String::Element was inserted"<<endl<<endl;
 				}
 				break;
 			case 2: 
@@ -79,22 +79,25 @@ int _tmain(int argc, _TCHAR* argv[])
 					int element;
 					cin>>element;
 					intTree->Remove(element);
-					cout<<"Int::Element was removed"<<endl;
+					cout<<"Int::Element was removed"<<endl<<endl;
 				}
 				else
 				{
 					string element;
 					cin>>element;
 					stringTree->Remove(element);
-					cout<<"String::Element was removed"<<endl;
+					cout<<"String::Element was removed"<<endl<<endl;
 				}
 				break;
 			case 3:
 				if(flag == 1)
 				{
 					intTree->Print();
-					/*for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
-						cout<<*it<<" ";*/
+					for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
+						if((*it)->value == 2) 
+						{
+							intTree->Remove(it);
+						}
 				}
 				else
 				{
@@ -105,12 +108,12 @@ int _tmain(int argc, _TCHAR* argv[])
 				if(flag == 1)
 				{
 					intTree->Clear();
-					cout<<"Int::Tree is clear"<<endl;
+					cout<<"Int::Tree is clear"<<endl<<endl;
 				}
 				else
 				{
-					stringTree->Print();
-					cout<<"String::Tree is clear"<<endl;
+					stringTree->Clear();
+					cout<<"String::Tree is clear"<<endl<<endl;
 				}
 				break;
 			case 5 :
@@ -123,6 +126,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				{
 					cout<<stringTree->Size()<<endl;
 				}
+				cout<<endl;
 				break;
 			case 6:
 				created = false;
