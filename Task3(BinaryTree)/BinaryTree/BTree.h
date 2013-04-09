@@ -9,7 +9,7 @@ private:
 	int count;														//Количество элемнтов в дереве
 
 	void Insert(Node<T> **node, T value);
-	bool Remove(Node<T> **node, const T value);
+	bool BTree<T>::Remove(Node<T> *&node, const T value);
 	void DeleteBTree(Node<T> **node);
 	void Print(Node<T> *node) const;
 
@@ -83,18 +83,18 @@ void BTree<T>::Insert(T value)
 
 //private Удаление элемента со значением value
 template<class T>
-bool BTree<T>::Remove(Node<T> **node, const T value)
+bool BTree<T>::Remove(Node<T> *&node, const T value)
 {
-	if(!(*node))
+	if(!node)
 		return false;
 
-	if(value > (*node)->value)
+	if(value > node->value)
 	{
-		Remove(&((*node)->right), value);
+		return Remove(node->right, value);
 	}
-	else if(value < (*node)->value)
+	else if(value < node->value)
 	{
-		Remove(&((*node)->left), value);
+		return Remove(node->left, value);
 	}
 	//нашли удаляемый элемент
 	else
@@ -102,59 +102,62 @@ bool BTree<T>::Remove(Node<T> **node, const T value)
 		Node<T> *current;
 
 		//Если есть одна правая ветвь
-		if(!((*node)->left))
-		//if(!((*node)->left) && (*node)->right)
+		if(!(node->left))
+		//if(!(node->left) && node->right)
 		{
-			current = (*node)->right;
-			delete *node;
-			*node = current;
+			current = node->right;
+			delete node;
+			node = current;
 		}
 		//Если есть одна левая ветвь
-		else if(!((*node)->right))
-			//if(!((*node)->right) && (*node)->left)
+		else if(!(node->right))
+			//if(!(node->right) && node->left)
 		{
-			current = (*node)->left;
-			delete *node;
-			*node = current;
+			current = node->left;
+			delete node;
+			node = current;
 		}
 		//Если есть обе ветви
 		else
 		{
-			current = (*node)->right;
+			current = node->right;
 			Node<T> *parent = NULL;
 
 			//Поиск самого левого узла в правом поддереве
-			while(current->left)
+			while (current->left)
 			{
 				parent = current;
 				current = current->left;
 			}
 			//Меняем значение value на значение самого левого узла в правом поддереве
-			(*node)->value = current->value;
+			node->value = current->value;
 
-			if(parent)
+			if (parent)
 			{
-				Remove(&(parent->left), parent->left->value);
+				return Remove(parent->left, parent->left->value);
 			}
 			else
 			{
-				Remove(&((*node)->right), (*node)->right->value);
+				return Remove(node->right, node->right->value);
 			}
 		}
 	}
+	return false;
 }
 
 template<class T>
 bool BTree<T>::Remove(Iterator<T> it)
 {
-	return Remove(it, (*it)->value);
+	//Node<T>* node = *it;
+	count--;
+	return Remove(it.it, (*it)->value);
 }
 
 //Удаление элемента из дерева
 template<class T>
 bool BTree<T>::Remove(const T value)
 {
-	if(Remove(&root, value))
+	if(Remove(root, value))
 	{
 		count--;
 		return true;

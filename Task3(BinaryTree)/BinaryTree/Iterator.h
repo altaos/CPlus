@@ -13,31 +13,31 @@ public:
 	Iterator() {}
 	Iterator(Node<T> *node) : it(node) { }
 
-	Iterator &operator++(int i)
+	Iterator operator++(int i)
 	{
 		it = it->right;
 		return *this;
 	}
 
-	Iterator &operator--(int i)
+	Iterator operator--(int i)
 	{
 		it = it->left;
 		return *this;
 	}
 
-	Node<T>* &operator*()
+	T& operator*()
 	{
-		return it;
+		return it->value;
 	}
 
-	bool &operator==(const Iterator& it)
+	bool operator==(const Iterator& it)
 	{
 		return this->it == it;
 	}
 
-	bool &operator!=(const Iterator& iter)
+	bool operator!=(const Iterator& iter)
 	{
-		return *it != *iter;
+		return it != iter.it;
 	}
 
 };

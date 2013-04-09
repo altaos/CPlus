@@ -1,44 +1,19 @@
-﻿Build started 09.04.2013 9:39:44.
+﻿Build started 09.04.2013 11:36:42.
      1>Project "C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\BinaryTree\BinaryTree.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\BinaryTree.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
          stdafx.cpp
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BinaryTree.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt BTree.cpp BinaryTree.cpp
          BinaryTree.cpp
-     1>c:\users\user\documents\github\cplus\task3(binarytree)\binarytree\iterator.h(40): error C2678: binary '*' : no operator found which takes a left-hand operand of type 'const Iterator<T>' (or there is no acceptable conversion)
-                 with
-                 [
-                     T=int
-                 ]
-                 c:\users\user\documents\github\cplus\task3(binarytree)\binarytree\iterator.h(28): could be 'Node<T> *&Iterator<T>::operator *(void)'
-                 with
-                 [
-                     T=int
-                 ]
-                 while trying to match the argument list '(const Iterator<T>)'
-                 with
-                 [
-                     T=int
-                 ]
-                 c:\users\user\documents\github\cplus\task3(binarytree)\binarytree\iterator.h(39) : while compiling class template member function 'bool &Iterator<T>::operator !=(const Iterator<T> &)'
-                 with
-                 [
-                     T=int
-                 ]
-                 c:\users\user\documents\github\cplus\task3(binarytree)\binarytree\binarytree.cpp(96) : see reference to function template instantiation 'bool &Iterator<T>::operator !=(const Iterator<T> &)' being compiled
-                 with
-                 [
-                     T=int
-                 ]
-                 c:\users\user\documents\github\cplus\task3(binarytree)\binarytree\binarytree.cpp(81) : see reference to class template instantiation 'Iterator<T>' being compiled
-                 with
-                 [
-                     T=int
-                 ]
          BTree.cpp
          Generating Code...
-     1>Done Building Project "C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\BinaryTree\BinaryTree.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\Debug\BinaryTree.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\Debug\BinaryTree.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\Debug\BinaryTree.lib" /MACHINE:X86 Debug\BinaryTree.obj
+         Debug\BTree.obj
+         Debug\stdafx.obj
+         BinaryTree.vcxproj -> C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\Debug\BinaryTree.exe
+     1>Done Building Project "C:\Users\User\Documents\GitHub\CPlus\Task3(BinaryTree)\BinaryTree\BinaryTree.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:02.30
+Time Elapsed 00:00:03.59

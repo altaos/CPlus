@@ -63,6 +63,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					int element;
 					cin>>element;
 					intTree->Insert(element);
+					intTree->Print();
 					cout<<"Int::Element was inserted"<<endl<<endl;
 				}
 				else
@@ -79,6 +80,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					int element;
 					cin>>element;
 					intTree->Remove(element);
+					//intTree->Print();
 					cout<<"Int::Element was removed"<<endl<<endl;
 				}
 				else
@@ -92,12 +94,13 @@ int _tmain(int argc, _TCHAR* argv[])
 			case 3:
 				if(flag == 1)
 				{
-					intTree->Print();
-					for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
-						if((*it)->value == 2) 
+					/*for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
+						if(*it == 2) 
 						{
 							intTree->Remove(it);
-						}
+							break;
+						}*/
+					intTree->Print();
 				}
 				else
 				{
