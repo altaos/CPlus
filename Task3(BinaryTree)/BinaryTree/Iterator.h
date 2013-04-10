@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "stdafx.h"
 
 //template<class T> BTree;
 
@@ -40,4 +40,15 @@ public:
 		return it != iter.it;
 	}
 
+	Node<T>* operator ->()
+	{
+		  return it;
+	}
+
+	Node<T>* NodeIt()
+	{
+		return it;
+	}
+
+	//friend class BTree;
 };

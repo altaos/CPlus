@@ -8,13 +8,13 @@ private:
 	Node<T> *root;													//Корень дерева
 	int count;														//Количество элемнтов в дереве
 
-	void Insert(Node<T> **node, T value);
-	bool BTree<T>::Remove(Node<T> *&node, const T value);
+	//void Insert(Node<T> **node, T value);
+	void Insert(Node<T> *node);
+	bool Remove(Node<T> *&node, const T value);
 	void DeleteBTree(Node<T> **node);
 	void Print(Node<T> *node) const;
-	void Insert(Node<T> *node);
 	Node<T> *SearchNode(T value);
-	bool Remove(Node<T> *node);
+	//bool Remove(Node<T> *node);
 
 public:
 	BTree(void);
@@ -154,7 +154,7 @@ void BTree<T>::Insert(T value)
 }
 
 //private Удаление элемента со значением value
-/*template<class T>
+template<class T>
 bool BTree<T>::Remove(Node<T> *&node, const T value)
 {
 	if(!node)
@@ -214,10 +214,10 @@ bool BTree<T>::Remove(Node<T> *&node, const T value)
 			}
 		}
 	}
-	return false;
-}*/
+	//return false;
+}
 
-template<class T>
+/*template<class T>
 bool BTree<T>::Remove(Node<T> *removedNode)
 {
 	if(!removedNode)
@@ -231,17 +231,58 @@ bool BTree<T>::Remove(Node<T> *removedNode)
 
 
 }
+*/
 
 template<class T>
 bool BTree<T>::Remove(Iterator<T> it)
 {
-	//Node<T>* node = *it;
-	count--;
-	return Remove(it.it, (*it)->value);
+	Node<T> *node = it.NodeIt();
+
+	//если итератор указывает на лист
+	if (!(node->left || node->right))
+	{
+		if(node->value < node->parent->value)
+		{
+			node->parent->left = NULL;
+		}
+		else 
+		{
+			node->parent->right = NULL;
+		}
+		delete node;
+		count--;
+		return true;
+	}
+	T value = *it;
+	Node<T> *parent = node->parent;
+	//count--;
+	//return Remove(it.it, (*it)->value);
+	if (Remove(node, value))
+	{
+		count--;
+
+		if (parent)
+		{
+			if (value < parent->value)
+			{
+				parent->left = node;
+			}
+			else
+			{
+				parent->right = node;
+			}
+		}
+
+		node->parent = parent;
+
+		return true;
+	}
+
+	return false;
 }
 
 //Удаление элемента из дерева
-/*template<class T>
+template<class T>
 bool BTree<T>::Remove(const T value)
 {
 	if(Remove(root, value))
@@ -251,14 +292,16 @@ bool BTree<T>::Remove(const T value)
 	}
 
 	return false;
-}*/
-template<class T>
+}
+
+/*template<class T>
 bool BTree<T>::Remove(const T value)
 {
 	Node<T> *removedNode = SearchNode(value);
 
 	return Remove(removedNode);
 }
+*/
 
 template<class T>
 void BTree<T>::Clear()
@@ -318,3 +361,9 @@ void BTree<T>::Print() const
 	Print(root);
 	cout<<endl;
 }
+
+
+
+
+
+

@@ -13,6 +13,23 @@ int _tmain(int argc, _TCHAR* argv[])
 	tree->Insert(3);
 	tree->Insert(1);
 	tree->Insert(6);
+	tree->Insert(7);
+	tree->Insert(0);
+
+	tree->Print();
+
+	//tree->Remove(6);
+
+	
+
+	for(BTree<int>::iterator it = tree->begin(); it != tree->end(); it++)
+		if(*it == 7) 
+		{
+			tree->Remove(it);
+			break;
+		}
+
+	tree->Print();
 	/*int choice;
 	bool created = false;
 	BTree<int> *intTree = new BTree<int>();
