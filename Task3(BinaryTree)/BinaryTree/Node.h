@@ -19,11 +19,4 @@ public:
 		this->value = value;
 		right = left = NULL;
 	}
-
-	/*bool &operator!=(Node& node)
-	{
-		if(node.value != value && *right != *left)
-			return true;
-		return false;
-	}*/
 };
