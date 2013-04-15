@@ -2,35 +2,13 @@
 //
 
 #include "stdafx.h"
-//#include "BTree.h"
 
 using namespace std;
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BTree<int> *tree = new BTree<int>();
-	tree->Insert(3);
-	tree->Insert(1);
-	tree->Insert(6);
-	tree->Insert(7);
-	tree->Insert(0);
-
-	tree->Print();
-
-	//tree->Remove(6);
-
-	
-
-	for(BTree<int>::iterator it = tree->begin(); it != tree->end(); it++)
-		if(*it == 7) 
-		{
-			tree->Remove(it);
-			break;
-		}
-
-	tree->Print();
-	/*int choice;
+	int choice;
 	bool created = false;
 	BTree<int> *intTree = new BTree<int>();
 	BTree<string> *stringTree = new BTree<string>();
@@ -62,9 +40,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		else
 		{
-			if(flag == 1)
+			if (flag == 1)
+			{
 				cout<<"Int tree"<<endl<<endl;
-			if(flag == 2)
+				cout<<"0. Create tree"<<endl; 
+			}
+			if (flag == 2)
 				cout<<"String tree"<<endl<<endl;
 
 			cout<<"1. Insert element"<<endl;
@@ -74,12 +55,28 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout<<"5. Count"<<endl;
 			cout<<"6. Main menu"<<endl<<endl;
 
+			if (flag == 1)
+				cout<<"7. Iterator delete"<<endl<<endl;
+
+
 			cin>>choice;
 
 			switch (choice)
 			{
+			case 0:
+				if (flag == 1)
+				{
+					srand(time(NULL));
+					int num = 0;
+					for(int i = 0; i < 15; i++)
+					{
+						num = rand() % 30;
+						intTree->Insert(num);
+					}
+				}
+				break;
 			case 1 :
-				if(flag == 1)
+				if (flag == 1)
 				{
 					int element;
 					cin>>element;
@@ -96,12 +93,11 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				break;
 			case 2: 
-				if(flag == 1)
+				if (flag == 1)
 				{
 					int element;
 					cin>>element;
 					intTree->Remove(element);
-					//intTree->Print();
 					cout<<"Int::Element was removed"<<endl<<endl;
 				}
 				else
@@ -113,14 +109,8 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				break;
 			case 3:
-				if(flag == 1)
+				if (flag == 1)
 				{
-					/*for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
-						if(*it == 2) 
-						{
-							intTree->Remove(it);
-							break;
-						}
 					intTree->Print();
 				}
 				else
@@ -129,7 +119,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				break;
 			case 4:
-				if(flag == 1)
+				if (flag == 1)
 				{
 					intTree->Clear();
 					cout<<"Int::Tree is clear"<<endl<<endl;
@@ -142,7 +132,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				break;
 			case 5 :
 				cout<<"Count : ";
-				if(flag == 1)
+				if (flag == 1)
 				{
 					cout<<intTree->Size()<<endl;
 				}
@@ -154,7 +144,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				break;
 			case 6:
 				created = false;
-				if(flag == 1)
+				if (flag == 1)
 				{
 					delete intTree;
 				}
@@ -164,12 +154,25 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				flag = -1;
 				break;
+			case 7:
+				if (flag == 1)
+				{
+					cout << "Type integer : ";
+					int num;
+					cin >> num;
+					for(BTree<int>::iterator it = intTree->begin(); it != intTree->end(); it++)
+						if (*it == num)
+						{
+							intTree->Remove(it);
+							break;
+						}
+				}
 			default:
 				break;
 			}
 		}
 	}
-	while (choice != 7);*/
+	while (choice != 8);
 
 	return 0;
 }

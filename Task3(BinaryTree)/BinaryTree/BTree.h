@@ -8,13 +8,11 @@ private:
 	Node<T> *root;													//Корень дерева
 	int count;														//Количество элемнтов в дереве
 
-	//void Insert(Node<T> **node, T value);
-	void Insert(Node<T> *node);
-	bool Remove(Node<T> *&node, const T value);
-	void DeleteBTree(Node<T> **node);
+	void Insert(Node<T> *node);										//Вставка узла в дерево
+	bool Remove(Node<T> *&node, const T value);						//Удалени эл-та со значением value в дереве, начинаю с данного узла
+	void DeleteBTree(Node<T> *&node);
 	void Print(Node<T> *node) const;
 	Node<T> *SearchNode(T value);
-	//bool Remove(Node<T> *node);
 
 public:
 	BTree(void);
@@ -23,12 +21,12 @@ public:
 
 	void Insert(T value);											//Вставка элемента в дерево
 	bool Remove(const T value);										//Удаление элемента из дерева по значению
-	bool Remove(Iterator<T> it);
-	void Clear();
+	bool Remove(Iterator<T> it);									//Удаление элемента по итератору
+	void Clear();													//Очистить дерево
 	int Size() const;												//Получить количество элементов в дереве
-	Iterator<T> begin();
+	Iterator<T> begin();											//Получить итератор на корень дерева
 	Iterator<T> end();
-	void Print() const;
+	void Print() const;												//Вывести дерево на консоль
 
 	typedef Iterator<T> iterator;
 };
@@ -50,7 +48,7 @@ BTree<T>::BTree(T value)
 template<class T>
 BTree<T>::~BTree(void)
 {
-	DeleteBTree(&root);
+	DeleteBTree(root);
 }
 
 template<class T>
@@ -72,31 +70,9 @@ Node<T>* BTree<T>::SearchNode(T value)
 
 	return NULL;
 }
-//private Добавление в дерево
-/*template<class T>
-void BTree<T>::Insert(Node<T> **node, T value)
-{
-	//Если узел пуст
-	if(!(*node))
-	{
-		*node = new Node<T>(value);
-		count++;
-	}
-	else
-	{
-		//Если значение больше значения текущего узла, то отправляем в правое поддерево
-		if(value >= (*node)->value)
-		{
-			Insert(&((*node)->right), value);
-		}
-		else
-		{
-			Insert(&((*node)->left), value);
-		}
-	}
-}*/
 
-template<class T>
+//Вставка узла в дерево
+template<class T> 
 void BTree<T>::Insert(Node<T> *node)
 {
 	if(!node)
@@ -148,7 +124,6 @@ void BTree<T>::Insert(Node<T> *node)
 template<class T>
 void BTree<T>::Insert(T value)
 {
-	//Insert(&root, value);
 	Node<T> *node = new Node<T>(value);
 	Insert(node);
 }
@@ -175,7 +150,6 @@ bool BTree<T>::Remove(Node<T> *&node, const T value)
 
 		//Если есть одна правая ветвь
 		if(!(node->left))
-		//if(!(node->left) && node->right)
 		{
 			current = node->right;
 			delete node;
@@ -183,7 +157,6 @@ bool BTree<T>::Remove(Node<T> *&node, const T value)
 		}
 		//Если есть одна левая ветвь
 		else if(!(node->right))
-			//if(!(node->right) && node->left)
 		{
 			current = node->left;
 			delete node;
@@ -214,29 +187,13 @@ bool BTree<T>::Remove(Node<T> *&node, const T value)
 			}
 		}
 	}
-	//return false;
 }
 
-/*template<class T>
-bool BTree<T>::Remove(Node<T> *removedNode)
-{
-	if(!removedNode)
-		return false;
-
-	if(removedNode == root && count == 1)
-	{
-		count--;
-		delete root;
-	}
-
-
-}
-*/
-
+//Удаление по итератору
 template<class T>
 bool BTree<T>::Remove(Iterator<T> it)
 {
-	Node<T> *node = it.NodeIt();
+	Node<T> *node = it.it;
 
 	//если итератор указывает на лист
 	if (!(node->left || node->right))
@@ -255,8 +212,7 @@ bool BTree<T>::Remove(Iterator<T> it)
 	}
 	T value = *it;
 	Node<T> *parent = node->parent;
-	//count--;
-	//return Remove(it.it, (*it)->value);
+
 	if (Remove(node, value))
 	{
 		count--;
@@ -294,19 +250,11 @@ bool BTree<T>::Remove(const T value)
 	return false;
 }
 
-/*template<class T>
-bool BTree<T>::Remove(const T value)
-{
-	Node<T> *removedNode = SearchNode(value);
-
-	return Remove(removedNode);
-}
-*/
-
+//Очистка дерева
 template<class T>
 void BTree<T>::Clear()
 {
-	DeleteBTree(&root);
+	DeleteBTree(root);
 }
 
 //Получение количества элементов в дереве
@@ -318,17 +266,18 @@ int BTree<T>::Size() const
 
 //private Удаление дерева
 template<class T>
-void BTree<T>::DeleteBTree(Node<T> **node)
+void BTree<T>::DeleteBTree(Node<T>*& node)
 {
-	if((*node))
+	if(node)
 	{
-		DeleteBTree(&((*node)->left));
-		DeleteBTree(&((*node)->right));
-		delete *node;
+		DeleteBTree(node->left);
+		DeleteBTree(node->right);
+		delete node;
 		count = 0;
 	}
 }
 
+//Получение итератора, указывающего на корень
 template<class T>
 Iterator<T> BTree<T>::begin()
 {
@@ -343,6 +292,7 @@ Iterator<T> BTree<T>::end()
 	return it;
 }
 
+//Вывести дерево на консоль
 template<class T>
 void BTree<T>::Print(Node<T> *node) const
 {
@@ -353,6 +303,7 @@ void BTree<T>::Print(Node<T> *node) const
 	Print(node->right);
 }
 
+//Вывод дерева на консоль
 template<class T>
 void BTree<T>::Print() const
 {
