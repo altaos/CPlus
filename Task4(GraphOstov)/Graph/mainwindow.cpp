@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
+#include <QMdiSubWindow>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,10 +28,9 @@ void MainWindow::on_openFile_triggered()
     SubWindow *subWindow = new SubWindow(this);
     subWindow->setWindowTitle("Graph " + (int)(ui->mdiArea->subWindowList(QMdiArea::CreationOrder).size()));
     subWindow->LoadGraph(filename);
-    ui->mdiArea->addSubWindow(subWindow);
     subWindow->show();
     subWindow->activateWindow();
-
+    ui->mdiArea->addSubWindow(subWindow);
 }
 
 void MainWindow::on_saveFile_triggered()
@@ -42,7 +42,9 @@ void MainWindow::on_saveFile_triggered()
             tr("Documents (*.txt);;All files (*.*)") );
 
     //SubWindow* subWindow = reinterpret_cast<SubWindow*>ui->mdiArea->activeSubWindow();
-    //SubWindow* subWindow = static_cast<SubWindow*>(ui->mdiArea->activeSubWindow()->widget());
-    //subWindow->SaveGraph(filename);
+    //if (ui->mdiArea->activeSubWindow() != NULL)
+    SubWindow* subWindow = static_cast<SubWindow*>(ui->mdiArea->currentSubWindow()->widget());//activeSubWindow()->widget());
+
+    subWindow->SaveGraph(filename);
 }
 

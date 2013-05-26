@@ -13,7 +13,7 @@ public:
     FileManager();
 
     static Graph* open(QString filename);
-    static void save(Graph* graph,std::string filename);
+    static void save(Graph* graph,QString filename);
 };
 
 #endif // FILEMANAGER_H

@@ -10,7 +10,6 @@ class GraphView
 {
 private:
     Graph* graph;
-    QAction* currentAction;
     QGraphicsScene* scene;
     QBrush* brush;
     QPen* pen;
@@ -19,7 +18,6 @@ public:
     GraphView();
     ~GraphView();
 
-    void setCurrentAction(QAction* action);
     QGraphicsScene* getScene();
     void setGraph(Graph* graph);
     Graph* getGraph();

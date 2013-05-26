@@ -4,7 +4,6 @@ GraphView::GraphView()
 {
     graph = new Graph();
     graph->setBeginNodeNumber(-1);
-    currentAction = NULL;
     scene = new QGraphicsScene();
     brush = new QBrush(Qt::white);
     pen = new QPen(Qt::green);
@@ -19,11 +18,6 @@ GraphView::~GraphView()
 
     if(graph)
         delete graph;
-}
-
-void GraphView::setCurrentAction(QAction* action)
-{
-    currentAction = action;
 }
 
 QGraphicsScene* GraphView::getScene()

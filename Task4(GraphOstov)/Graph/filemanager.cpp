@@ -1,4 +1,5 @@
 #include "filemanager.h"
+#include <QTextStream>
 
 FileManager::FileManager()
 {
@@ -83,6 +84,31 @@ Graph* FileManager::open(QString filename)
     }
 
     return graph;
+}
+
+void FileManager::save(Graph *graph, QString filename)
+{
+    QFile file(filename);
+    file.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream out(&file);
+
+    for(int i = 0; i < graph->getNodeCount(); i++)
+    {
+        Node* node = graph->getNode(i);
+        out << node->getNumber() << "-" << node->getCoord().x() << "-" << node->getCoord().y() <<":";
+
+        for(int j = 0; j < node->getEdgeCount(); j++)
+        {
+            Node* node2 = node->getEgde(j)->getN1()->getNumber() == node->getNumber() ? node->getEgde(j)->getN2() :
+                                                                                        node->getEgde(j)->getN1();
+            out << node2->getNumber() << "-" << node2->getCoord().x() << "-" << node2->getCoord().y();
+            if (j != node->getEdgeCount() - 1) out << ",";
+            else out << "\n";
+        }
+    }
+
+    out << ".";
+    file.close();
 }
 
 int FileManager::getNodeNumber(std::string str)

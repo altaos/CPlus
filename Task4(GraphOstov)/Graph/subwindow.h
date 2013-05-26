@@ -2,7 +2,7 @@
 #define SUBWINDOW_H
 
 #include <QWidget>
-#include <QTextStream>
+//#include <QTextStream>
 #include "graphview.h"
 
 namespace Ui {
