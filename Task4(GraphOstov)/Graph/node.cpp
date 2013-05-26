@@ -84,3 +84,17 @@ void Node::deleteEdge(Node *node)
         }
     }
 }
+
+bool Node::hasEdge(Node *node)
+{
+    for(std::vector<Edge*>::iterator it = edges->begin(); it != edges->end(); it++)
+    {
+        if((*it)->getN1()->getNumber() == node->getNumber() ||
+                (*it)->getN2()->getNumber() == node->getNumber())
+        {
+            return true;
+        }
+    }
+
+    return false;
+}

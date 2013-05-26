@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //ui->mdiArea->tileSubWindows();
 }
 
 MainWindow::~MainWindow()
@@ -17,16 +18,18 @@ MainWindow::~MainWindow()
 void MainWindow::on_openFile_triggered()
 {
     //this->setWindowTitle("Changed!");
-    QStringList filenames = QFileDialog::getOpenFileNames(
+    QString filename = QFileDialog::getOpenFileName(
             this,
             tr("Open Document"),
                 QDir::currentPath(),
             tr("Documents (*.txt);;All files (*.*)") );
 
-    QDialog *subWindow = new SubWindow();
+    SubWindow *subWindow = new SubWindow(this);
+    subWindow->LoadGraph(filename);
     ui->mdiArea->addSubWindow(subWindow);
     subWindow->show();
     subWindow->activateWindow();
+
 }
 
 void MainWindow::on_saveFile_triggered()
@@ -40,19 +43,25 @@ void MainWindow::on_saveFile_triggered()
 
 void MainWindow::on_newFile_triggered()
 {
-    QDialog *subWindow = new SubWindow();
+    QDialog *subWindow = new SubWindow(this);
     ui->mdiArea->addSubWindow(subWindow);
     subWindow->show();
     subWindow->activateWindow();
+    //ui->mdiArea->tileSubWindows();
 }
 
 void MainWindow::on_addNode_triggered()
 {
-    currentAction = ui->addNode;
+    for(QList<QMdiSubWindow*>::iterator it = ui->mdiArea->subWindowList().begin(); it != ui->mdiArea->subWindowList().end(); it++)
+    {
+        QMdiSubWindow *subWindow = *it;
+        SubWindow* mySubWind = reinterpret_cast<SubWindow*>(subWindow);
+        mySubWind->getGraphView()->setCurrentAction(ui->addNode);
+    }
 }
 
 void MainWindow::on_addEdge_triggered()
 {
-    currentAction = ui->addEdge;
+
 }
 

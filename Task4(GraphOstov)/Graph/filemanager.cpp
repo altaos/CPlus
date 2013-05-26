@@ -1,38 +1,27 @@
-#include "subwindow.h"
-#include "ui_subwindow.h"
+#include "filemanager.h"
 
-SubWindow::SubWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::SubWindow)
+FileManager::FileManager()
 {
-    ui->setupUi(this);
-    graphView = new GraphView();
-    ui->graphicsView->setScene(graphView->getScene());
 }
 
-SubWindow::~SubWindow()
-{
-    delete graphView;
-    delete ui;
-}
-
-GraphView* SubWindow::getGraphView()
-{
-    return graphView;
-}
-
-void SubWindow::LoadGraph(QString filename)
+Graph* FileManager::open(QString filename)
 {
     Graph* graph = NULL;
+    //std::ifstream file;
+    //std::string line;
     QFile file(filename);
     std::string line;
+    //file(filename.c_str());
+    //file.open(filename, std::ios_base::in);
+    //file.open(filename, std::ios_base::in);
     if(file.open(QIODevice::ReadOnly |QIODevice::Text))
     {
         graph = new Graph();
         int min_number = -1;
 
-        while(!file.atEnd())
+        while(!file.atEnd()) // the end wasn't achieved
         {
+            //std::getline(file,line); // get current line
             QString str = file.readLine();
             line = str.toStdString();
             if (line == ".")
@@ -100,17 +89,17 @@ void SubWindow::LoadGraph(QString filename)
         graph->setBeginNodeNumber(++min_number);
     }
 
-    graphView->setGraph(graph);
+    return graph;
 }
 
-int SubWindow::getNodeNumber(std::string str)
+int FileManager::getNodeNumber(std::string str)
 {
     int pos = str.find_first_of('-', 0);
     int num = atoi(str.substr(0, pos).c_str());
     return num;
 }
 
-Node* SubWindow::getNode(std::string str)
+Node* FileManager::getNode(std::string str)
 {
     QPoint point;
     int pos = str.find_first_of('-', 0);

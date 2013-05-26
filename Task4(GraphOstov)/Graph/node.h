@@ -31,6 +31,7 @@ public:
     int getRadius();
     void addEdge(Edge* edge);
     void deleteEdge(Node* node);
+    bool hasEdge(Node* node);
     int getEdgeCount();
 };
 

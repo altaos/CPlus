@@ -2,7 +2,9 @@
 #define SUBWINDOW_H
 
 #include <QDialog>
-#include "graph.h"
+#include <QFile>
+#include <QMouseEvent>
+#include "graphview.h"
 
 namespace Ui {
 class SubWindow;
@@ -16,13 +18,14 @@ public:
     explicit SubWindow(QWidget *parent = 0);
     ~SubWindow();
 
-    Graph* getGraph();
-    //void setCurrentAction(QAction* action);
-    
+    GraphView* getGraphView();
+    void LoadGraph(QString filename);
+
 private:
     Ui::SubWindow *ui;
-    Graph* graph;
-    QAction* currentAction;
+    GraphView* graphView;
+    int getNodeNumber(std::string str);
+    Node* getNode(std::string str);
 };
 
 #endif // SUBWINDOW_H

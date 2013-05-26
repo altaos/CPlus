@@ -17,13 +17,17 @@ SOURCES += main.cpp\
     subwindow.cpp \
     node.cpp \
     edge.cpp \
-    graph.cpp
+    graph.cpp \
+    graphview.cpp \
+    filemanager.cpp
 
 HEADERS  += mainwindow.h \
     subwindow.h \
     node.h \
     edge.h \
-    graph.h
+    graph.h \
+    graphview.h \
+    filemanager.h
 
 FORMS    += mainwindow.ui \
     subwindow.ui

@@ -20,8 +20,12 @@ public:
     void addNode(Node* node);
     void deleteNode(std::vector<Node*>::iterator it);
 
+    void addEdge(Node* node1, Node* node2, bool isMarked = false);
+    Node* getNode(int index);
+
     int getNextNodeNumber();
     void setBeginNodeNumber(int number);
+    int findNode(int number);
 };
 
 #endif // GRAPH_H
