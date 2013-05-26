@@ -17,9 +17,20 @@ Graph::~Graph()
 void Graph::addNode(Node *node)
 {
     nodes->push_back(node);
+    numberOfCurrentNode = node->getNumber();
 }
 
 void Graph::deleteNode(std::vector<Node*>::iterator it)
 {
     nodes->erase(it);
+}
+
+int Graph::getNextNodeNumber()
+{
+    return numberOfCurrentNode++;
+}
+
+void Graph::setBeginNodeNumber(int number)
+{
+    numberOfCurrentNode = number;
 }

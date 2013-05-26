@@ -38,3 +38,21 @@ void MainWindow::on_saveFile_triggered()
             tr("Documents (*.txt);;All files (*.*)") );
 }
 
+void MainWindow::on_newFile_triggered()
+{
+    QDialog *subWindow = new SubWindow();
+    ui->mdiArea->addSubWindow(subWindow);
+    subWindow->show();
+    subWindow->activateWindow();
+}
+
+void MainWindow::on_addNode_triggered()
+{
+    currentAction = ui->addNode;
+}
+
+void MainWindow::on_addEdge_triggered()
+{
+    currentAction = ui->addEdge;
+}
+

@@ -8,6 +8,8 @@
 class Graph
 {
 private:
+    int numberOfCurrentNode;
+
     std::vector<Node*>* nodes;
     std::vector<Edge*>* edges;
 
@@ -17,6 +19,9 @@ public:
 
     void addNode(Node* node);
     void deleteNode(std::vector<Node*>::iterator it);
+
+    int getNextNodeNumber();
+    void setBeginNodeNumber(int number);
 };
 
 #endif // GRAPH_H
