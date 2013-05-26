@@ -14,10 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    subwindow.cpp
+    subwindow.cpp \
+    node.cpp \
+    edge.cpp \
+    graph.cpp
 
 HEADERS  += mainwindow.h \
-    subwindow.h
+    subwindow.h \
+    node.h \
+    edge.h \
+    graph.h
 
 FORMS    += mainwindow.ui \
     subwindow.ui

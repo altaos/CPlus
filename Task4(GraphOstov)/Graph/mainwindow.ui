@@ -54,7 +54,7 @@
   </action>
   <action name="saveFile">
    <property name="text">
-    <string>Созранить</string>
+    <string>Сохранить</string>
    </property>
   </action>
  </widget>
