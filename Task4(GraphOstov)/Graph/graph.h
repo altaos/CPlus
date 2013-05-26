@@ -14,6 +14,9 @@ private:
 public:
     Graph();
     ~Graph();
+
+    void addNode(Node* node);
+    void deleteNode(std::vector<Node*>::iterator it);
 };
 
 #endif // GRAPH_H
