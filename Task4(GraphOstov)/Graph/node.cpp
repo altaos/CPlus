@@ -98,3 +98,8 @@ bool Node::hasEdge(Node *node)
 
     return false;
 }
+
+Edge *Node::getEgde(int index)
+{
+    return edges->at(index);
+}

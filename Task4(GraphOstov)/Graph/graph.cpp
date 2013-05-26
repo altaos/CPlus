@@ -64,3 +64,13 @@ int Graph::findNode(int number)
 
     return -1;
 }
+
+int Graph::getNodeCount()
+{
+    return nodes->size();
+}
+
+int Graph::getEdgeCount()
+{
+    return edges->size();
+}

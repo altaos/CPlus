@@ -26,6 +26,8 @@ public:
     int getNextNodeNumber();
     void setBeginNodeNumber(int number);
     int findNode(int number);
+    int getNodeCount();
+    int getEdgeCount();
 };
 
 #endif // GRAPH_H

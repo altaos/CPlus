@@ -1,26 +1,25 @@
 #ifndef SUBWINDOW_H
 #define SUBWINDOW_H
 
-#include <QDialog>
-#include <QFile>
-#include <QMouseEvent>
+#include <QWidget>
+#include <QTextStream>
 #include "graphview.h"
 
 namespace Ui {
 class SubWindow;
 }
 
-class SubWindow : public QDialog
+class SubWindow : public QWidget
 {
     Q_OBJECT
     
 public:
     explicit SubWindow(QWidget *parent = 0);
     ~SubWindow();
-
     GraphView* getGraphView();
     void LoadGraph(QString filename);
-
+    void SaveGraph(QString filename);
+    
 private:
     Ui::SubWindow *ui;
     GraphView* graphView;

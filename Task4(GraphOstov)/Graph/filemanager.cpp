@@ -7,21 +7,15 @@ FileManager::FileManager()
 Graph* FileManager::open(QString filename)
 {
     Graph* graph = NULL;
-    //std::ifstream file;
-    //std::string line;
     QFile file(filename);
     std::string line;
-    //file(filename.c_str());
-    //file.open(filename, std::ios_base::in);
-    //file.open(filename, std::ios_base::in);
     if(file.open(QIODevice::ReadOnly |QIODevice::Text))
     {
         graph = new Graph();
         int min_number = -1;
 
-        while(!file.atEnd()) // the end wasn't achieved
+        while(!file.atEnd())
         {
-            //std::getline(file,line); // get current line
             QString str = file.readLine();
             line = str.toStdString();
             if (line == ".")
@@ -60,7 +54,6 @@ Graph* FileManager::open(QString filename)
 
             if (edges.size()>0)
             {
-                // add edges
                 for(int i=0;i<edges.size();i++)
                 {
                     Node* nn = NULL;

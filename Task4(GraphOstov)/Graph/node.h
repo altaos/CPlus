@@ -32,6 +32,7 @@ public:
     void addEdge(Edge* edge);
     void deleteEdge(Node* node);
     bool hasEdge(Node* node);
+    Edge* getEgde(int index);
     int getEdgeCount();
 };
 

@@ -16,7 +16,9 @@ GraphView::~GraphView()
     delete pen;
     delete brush;
     delete scene;
-    delete graph;
+
+    if(graph)
+        delete graph;
 }
 
 void GraphView::setCurrentAction(QAction* action)
@@ -32,4 +34,9 @@ QGraphicsScene* GraphView::getScene()
 void GraphView::setGraph(Graph *graph)
 {
     this->graph = graph;
+}
+
+Graph *GraphView::getGraph()
+{
+    return graph;
 }

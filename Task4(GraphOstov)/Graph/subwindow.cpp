@@ -2,7 +2,7 @@
 #include "ui_subwindow.h"
 
 SubWindow::SubWindow(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::SubWindow)
 {
     ui->setupUi(this);
@@ -71,7 +71,6 @@ void SubWindow::LoadGraph(QString filename)
 
             if (edges.size()>0)
             {
-                // add edges
                 for(int i=0;i<edges.size();i++)
                 {
                     Node* nn = NULL;
@@ -103,6 +102,31 @@ void SubWindow::LoadGraph(QString filename)
     graphView->setGraph(graph);
 }
 
+void SubWindow::SaveGraph(QString filename)
+{
+    QFile file(filename);
+    file.open(QIODevice::WriteOnly|QIODevice::Text);
+    QTextStream out(&file);
+
+    for(int i = 0; graphView->getGraph()->getNodeCount(); i++)
+    {
+        Node* node = graphView->getGraph()->getNode(i);
+        out << node->getNumber() << "-" << node->getCoord().x() << "-" << node->getCoord().y() <<":";
+
+        for(int j = 0; j < node->getEdgeCount(); j++)
+        {
+            Node* node2 = node->getEgde(j)->getN1()->getNumber() == node->getNumber() ? node->getEgde(j)->getN2() :
+                                                                                        node->getEgde(j)->getN1();
+            out << node2->getNumber() << "-" << node2->getCoord().x() << "-" << node2->getCoord().y();
+            if (j != node->getEdgeCount() - 1) out << ",";
+            else out << "\n";
+        }
+    }
+
+    out << ".";
+    file.close();
+}
+
 int SubWindow::getNodeNumber(std::string str)
 {
     int pos = str.find_first_of('-', 0);
@@ -123,3 +147,4 @@ Node* SubWindow::getNode(std::string str)
 
     return node;
 }
+

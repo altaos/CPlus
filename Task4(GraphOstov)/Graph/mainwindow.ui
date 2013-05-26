@@ -46,7 +46,6 @@
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="newFile"/>
     <addaction name="openFile"/>
     <addaction name="saveFile"/>
    </widget>
@@ -54,9 +53,6 @@
     <property name="title">
      <string>Граф</string>
     </property>
-    <addaction name="addNode"/>
-    <addaction name="addEdge"/>
-    <addaction name="separator"/>
     <addaction name="findOstovTree"/>
    </widget>
    <addaction name="menu"/>
@@ -71,21 +67,6 @@
   <action name="saveFile">
    <property name="text">
     <string>Сохранить</string>
-   </property>
-  </action>
-  <action name="newFile">
-   <property name="text">
-    <string>Новый документ</string>
-   </property>
-  </action>
-  <action name="addNode">
-   <property name="text">
-    <string>Добавить вершину</string>
-   </property>
-  </action>
-  <action name="addEdge">
-   <property name="text">
-    <string>Добавить ребро</string>
    </property>
   </action>
   <action name="findOstovTree">

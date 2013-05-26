@@ -22,6 +22,7 @@ public:
     void setCurrentAction(QAction* action);
     QGraphicsScene* getScene();
     void setGraph(Graph* graph);
+    Graph* getGraph();
 };
 
 #endif // GRAPHVIEW_H
