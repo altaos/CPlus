@@ -23,11 +23,12 @@ public:
     void setNumber(int number);
     QPoint getCoord();
     void setCoord(QPoint coord);
-    bool getIsVisited();
-    void setIsVisited(bool isVisited);
+    bool IsVisited();
+    void Visit();
     int getRadius();
     int getConnectedNodesCount();
     void addConnectedNode(Node* node);
+    void deleteConnectedNode(int index);
     bool hasConnectedNode(Node* node);
     Node* getConnectedNode(int index);
 };

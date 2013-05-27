@@ -17,7 +17,7 @@ Node::Node(Node &node)
 {
     this->number = node.number;
     this->coord = node.getCoord();
-    this->isVisited = node.getIsVisited();
+    this->isVisited = node.IsVisited();
     this->connected_nodes = new std::vector<Node*>();
 }
 
@@ -62,6 +62,11 @@ void Node::addConnectedNode(Node *node)
     connected_nodes->push_back(node);
 }
 
+void Node::deleteConnectedNode(int index)
+{
+    connected_nodes->erase(connected_nodes->begin() + index);
+}
+
 bool Node::hasConnectedNode(Node *node)
 {
     for(std::vector<Node*>::iterator it = connected_nodes->begin(); it != connected_nodes->end(); it++)
@@ -78,13 +83,28 @@ Node* Node::getConnectedNode(int index)
     return connected_nodes->at(index);
 }
 
-bool Node::getIsVisited()
+bool Node::IsVisited()
 {
     return isVisited;
 }
 
-void Node::setIsVisited(bool isVisited)
+void Node::Visit()
 {
-    this->isVisited = isVisited;
+    isVisited = true;
+    for(int i = 0; i < connected_nodes->size();)
+    {
+        Node* node = connected_nodes->at(i);
+        if(node->IsVisited())
+        {
+            //delete connection
+            node->deleteConnectedNode(i);
+        }
+        else
+        {
+            //set is visited
+            node->Visit();
+            i++;
+        }
+    }
 }
 

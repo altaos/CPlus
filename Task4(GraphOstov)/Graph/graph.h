@@ -10,10 +10,10 @@ private:
     int numberOfCurrentNode;
 
     std::vector<Node*>* nodes;
-    //std::vector<Edge*>* edges;
 
 public:
     Graph();
+    Graph(Graph& graph);
     ~Graph();
 
     void addNode(Node* node);
@@ -25,6 +25,7 @@ public:
     void setBeginNodeNumber(int number);
     int findNode(int number);
     int getNodeCount();
+    Graph* getOstovTree();
 };
 
 #endif // GRAPH_H

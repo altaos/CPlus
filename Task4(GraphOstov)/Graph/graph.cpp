@@ -5,6 +5,11 @@ Graph::Graph()
     nodes = new std::vector<Node*>();
 }
 
+Graph::Graph(Graph &graph)
+{
+
+}
+
 Graph::~Graph()
 {
     for(int i = 0; i < nodes->size(); i++)
@@ -55,4 +60,9 @@ int Graph::findNode(int number)
 int Graph::getNodeCount()
 {
     return nodes->size();
+}
+
+Graph *Graph::getOstovTree()
+{
+
 }
