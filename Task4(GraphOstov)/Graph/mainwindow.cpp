@@ -27,8 +27,9 @@ void MainWindow::on_openFile_triggered()
 
     SubWindow *subWindow = new SubWindow(this);
     subWindow->setWindowTitle("Graph " + (int)(ui->mdiArea->subWindowList(QMdiArea::CreationOrder).size()));
-    subWindow->LoadGraph(filename);
+    subWindow->loadGraph(filename);
     subWindow->show();
+    subWindow->getGraphView()->paintGraph();
     subWindow->activateWindow();
     ui->mdiArea->addSubWindow(subWindow);
 }
@@ -45,6 +46,6 @@ void MainWindow::on_saveFile_triggered()
     //if (ui->mdiArea->activeSubWindow() != NULL)
     SubWindow* subWindow = static_cast<SubWindow*>(ui->mdiArea->currentSubWindow()->widget());//activeSubWindow()->widget());
 
-    subWindow->SaveGraph(filename);
+    subWindow->saveGraph(filename);
 }
 

@@ -21,12 +21,12 @@ GraphView* SubWindow::getGraphView()
     return graphView;
 }
 
-void SubWindow::LoadGraph(QString filename)
+void SubWindow::loadGraph(QString filename)
 {
     graphView->setGraph(FileManager::open(filename));
 }
 
-void SubWindow::SaveGraph(QString filename)
+void SubWindow::saveGraph(QString filename)
 {
 //    QFile file(filename);
 //    file.open(QIODevice::WriteOnly|QIODevice::Text);

@@ -1,4 +1,5 @@
 #include "graphview.h"
+#include <QFont>
 
 GraphView::GraphView()
 {
@@ -6,14 +7,18 @@ GraphView::GraphView()
     graph->setBeginNodeNumber(-1);
     scene = new QGraphicsScene();
     brush = new QBrush(Qt::white);
-    pen = new QPen(Qt::green);
-    pen->setWidth(2);
+    penNode = new QPen(Qt::blue);
+    penNode->setWidth(2);
+    penEdge = new QPen(Qt::black);
+    penEdge->setWidth(2);
 }
 
 GraphView::~GraphView()
 {
-    delete pen;
+    delete penNode;
+    delete penEdge;
     delete brush;
+    scene->clear();
     delete scene;
 
     if(graph)
@@ -33,4 +38,27 @@ void GraphView::setGraph(Graph *graph)
 Graph *GraphView::getGraph()
 {
     return graph;
+}
+
+void GraphView::paintGraph()
+{
+    //paint edges
+    for(int i = 0; i < graph->getNodeCount(); i++)
+    {
+        Node* node1 = graph->getNode(i);
+        for(int j = 0; j < node1->getConnectedNodesCount(); j++)
+        {
+            scene->addLine(node1->getCoord().x(), node1->getCoord().y(), node1->getConnectedNode(j)->getCoord().x(),  node1->getConnectedNode(j)->getCoord().y(), *penEdge);
+            //scene->addLine()
+        }
+    }
+
+    //QFont* font = new QFont();
+    //paint nodes
+    for(int i = 0; i < graph->getNodeCount(); i++)
+    {
+        Node* node1 = graph->getNode(i);
+        scene->addEllipse(node1->getCoord().x() - node1->getRadius(), node1->getCoord().y() - node1->getRadius(), 2*node1->getRadius(), 2*node1->getRadius(), *penNode, *brush);
+        //QGraphicsTextItem text = scene->addText((QString)node1->getNumber(), *font);
+    }
 }

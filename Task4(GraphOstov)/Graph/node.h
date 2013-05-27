@@ -3,18 +3,15 @@
 
 #include <vector>
 #include <QPoint>
-#include "edge.h";
-
-class Edge;
 
 class Node
 {
 private:
     int number;
-    std::vector<Edge*>* edges;
     QPoint coord;
     bool isVisited;
     static const int radius = 10;
+    std::vector<Node*>* connected_nodes;
 
 public:
     Node(int number);
@@ -29,11 +26,10 @@ public:
     bool getIsVisited();
     void setIsVisited(bool isVisited);
     int getRadius();
-    void addEdge(Edge* edge);
-    void deleteEdge(Node* node);
-    bool hasEdge(Node* node);
-    Edge* getEgde(int index);
-    int getEdgeCount();
+    int getConnectedNodesCount();
+    void addConnectedNode(Node* node);
+    bool hasConnectedNode(Node* node);
+    Node* getConnectedNode(int index);
 };
 
 #endif // NODE_H

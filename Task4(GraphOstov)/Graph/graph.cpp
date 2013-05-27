@@ -3,15 +3,16 @@
 Graph::Graph()
 {
     nodes = new std::vector<Node*>();
-    edges = new std::vector<Edge*>();
 }
 
 Graph::~Graph()
 {
-    nodes->clear();
-    edges->clear();
+    for(int i = 0; i < nodes->size(); i++)
+    {
+        delete nodes->at(i);
+    }
+
     delete nodes;
-    delete edges;
 }
 
 void Graph::addNode(Node *node)
@@ -23,20 +24,6 @@ void Graph::addNode(Node *node)
 void Graph::deleteNode(std::vector<Node*>::iterator it)
 {
     nodes->erase(it);
-}
-
-void Graph::addEdge(Node *node1, Node *node2, bool isMarked)
-{
-    if (!node1->hasEdge(node2) && !node2->hasEdge(node1))
-    {
-        Edge* edge = new Edge();
-        edge->setNodes(node1,node2);
-        edge->setIsMarked(isMarked);
-        edges->push_back(edge);
-
-        node1->addEdge(edge);
-        node2->addEdge(edge);
-    }
 }
 
 Node *Graph::getNode(int index)
@@ -68,9 +55,4 @@ int Graph::findNode(int number)
 int Graph::getNodeCount()
 {
     return nodes->size();
-}
-
-int Graph::getEdgeCount()
-{
-    return edges->size();
 }

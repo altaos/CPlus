@@ -17,8 +17,8 @@ public:
     explicit SubWindow(QWidget *parent = 0);
     ~SubWindow();
     GraphView* getGraphView();
-    void LoadGraph(QString filename);
-    void SaveGraph(QString filename);
+    void loadGraph(QString filename);
+    void saveGraph(QString filename);
     
 private:
     Ui::SubWindow *ui;

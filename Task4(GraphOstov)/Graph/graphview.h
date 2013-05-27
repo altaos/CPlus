@@ -12,7 +12,8 @@ private:
     Graph* graph;
     QGraphicsScene* scene;
     QBrush* brush;
-    QPen* pen;
+    QPen* penNode;
+    QPen* penEdge;
 
 public:
     GraphView();
@@ -21,6 +22,7 @@ public:
     QGraphicsScene* getScene();
     void setGraph(Graph* graph);
     Graph* getGraph();
+    void paintGraph();
 };
 
 #endif // GRAPHVIEW_H

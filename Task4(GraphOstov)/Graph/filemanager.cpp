@@ -74,7 +74,12 @@ Graph* FileManager::open(QString filename)
                         nn = graph->getNode(n_pos);
                     }
 
-                    graph->addEdge(n,nn);
+                    if(!n->hasConnectedNode(nn) && !nn->hasConnectedNode(n))
+                    {
+                        n->addConnectedNode(nn);
+                        nn->addConnectedNode(n);
+                    }
+
                 }
             }
         }
@@ -97,12 +102,13 @@ void FileManager::save(Graph *graph, QString filename)
         Node* node = graph->getNode(i);
         out << node->getNumber() << "-" << node->getCoord().x() << "-" << node->getCoord().y() <<":";
 
-        for(int j = 0; j < node->getEdgeCount(); j++)
+        for(int j = 0; j < node->getConnectedNodesCount(); j++)
         {
-            Node* node2 = node->getEgde(j)->getN1()->getNumber() == node->getNumber() ? node->getEgde(j)->getN2() :
-                                                                                        node->getEgde(j)->getN1();
+            //Node* node2 = node->getEgde(j)->getN1()->getNumber() == node->getNumber() ? node->getEgde(j)->getN2() :
+            //                                                                            node->getEgde(j)->getN1();
+            Node* node2 = node->getConnectedNode(j);
             out << node2->getNumber() << "-" << node2->getCoord().x() << "-" << node2->getCoord().y();
-            if (j != node->getEdgeCount() - 1) out << ",";
+            if (j != node->getConnectedNodesCount() - 1) out << ",";
             else out << "\n";
         }
     }
