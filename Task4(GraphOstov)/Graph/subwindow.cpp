@@ -12,6 +12,8 @@ SubWindow::SubWindow(QWidget *parent) :
 
 SubWindow::~SubWindow()
 {
+    if(graph)
+       delete graph;
     delete graphView;
     delete ui;
 }
@@ -23,33 +25,17 @@ GraphView* SubWindow::getGraphView()
 
 void SubWindow::loadGraph(QString filename)
 {
-    graphView->setGraph(FileManager::open(filename));
+    graph = FileManager::open(filename);
 }
 
 void SubWindow::saveGraph(QString filename)
 {
-//    QFile file(filename);
-//    file.open(QIODevice::WriteOnly|QIODevice::Text);
-//    QTextStream out(&file);
+    FileManager::save(graph, filename);
+}
 
-//    for(int i = 0; graphView->getGraph()->getNodeCount(); i++)
-//    {
-//        Node* node = graphView->getGraph()->getNode(i);
-//        out << node->getNumber() << "-" << node->getCoord().x() << "-" << node->getCoord().y() <<":";
-
-//        for(int j = 0; j < node->getEdgeCount(); j++)
-//        {
-//            Node* node2 = node->getEgde(j)->getN1()->getNumber() == node->getNumber() ? node->getEgde(j)->getN2() :
-//                                                                                        node->getEgde(j)->getN1();
-//            out << node2->getNumber() << "-" << node2->getCoord().x() << "-" << node2->getCoord().y();
-//            if (j != node->getEdgeCount() - 1) out << ",";
-//            else out << "\n";
-//        }
-//    }
-
-//    out << ".";
-//    file.close();
-    FileManager::save(graphView->getGraph(), filename);
+Graph *SubWindow::getGraph()
+{
+    return graph;
 }
 
 //int SubWindow::getNodeNumber(std::string str)

@@ -2,14 +2,11 @@
 #define GRAPHVIEW_H
 
 #include "graph.h"
-#include <QAction>
 #include <QGraphicsScene>
-#include "filemanager.h"
 
 class GraphView
 {
 private:
-    Graph* graph;
     QGraphicsScene* scene;
     QBrush* brush;
     QPen* penNode;
@@ -20,9 +17,7 @@ public:
     ~GraphView();
 
     QGraphicsScene* getScene();
-    void setGraph(Graph* graph);
-    Graph* getGraph();
-    void paintGraph();
+    void paintGraph(Graph* graph);
 };
 
 #endif // GRAPHVIEW_H

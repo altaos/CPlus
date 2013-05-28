@@ -1,10 +1,9 @@
 #include "graphview.h"
 #include <QFont>
+#include "filemanager.h"
 
 GraphView::GraphView()
 {
-    graph = new Graph();
-    graph->setBeginNodeNumber(-1);
     scene = new QGraphicsScene();
     brush = new QBrush(Qt::white);
     penNode = new QPen(Qt::blue);
@@ -20,9 +19,6 @@ GraphView::~GraphView()
     delete brush;
     scene->clear();
     delete scene;
-
-    if(graph)
-        delete graph;
 }
 
 QGraphicsScene* GraphView::getScene()
@@ -30,17 +26,7 @@ QGraphicsScene* GraphView::getScene()
     return scene;
 }
 
-void GraphView::setGraph(Graph *graph)
-{
-    this->graph = graph;
-}
-
-Graph *GraphView::getGraph()
-{
-    return graph;
-}
-
-void GraphView::paintGraph()
+void GraphView::paintGraph(Graph* graph)
 {
     //paint edges
     for(int i = 0; i < graph->getNodeCount(); i++)

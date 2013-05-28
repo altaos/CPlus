@@ -18,7 +18,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_openFile_triggered()
 {
-    //this->setWindowTitle("Changed!");
     QString filename = QFileDialog::getOpenFileName(
             this,
             tr("Open Document"),
@@ -29,7 +28,7 @@ void MainWindow::on_openFile_triggered()
     subWindow->setWindowTitle("Graph " + (int)(ui->mdiArea->subWindowList(QMdiArea::CreationOrder).size()));
     subWindow->loadGraph(filename);
     subWindow->show();
-    subWindow->getGraphView()->paintGraph();
+    subWindow->getGraphView()->paintGraph(subWindow->getGraph());
     subWindow->activateWindow();
     ui->mdiArea->addSubWindow(subWindow);
 }

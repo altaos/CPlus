@@ -62,7 +62,7 @@ int Graph::getNodeCount()
     return nodes->size();
 }
 
-Graph *Graph::getOstovTree()
+Graph *Graph::getOstovTree(Graph* startGraph)
 {
 
 }

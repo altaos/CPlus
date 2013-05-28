@@ -4,6 +4,7 @@
 #include <QWidget>
 //#include <QTextStream>
 #include "graphview.h"
+#include "filemanager.h"
 
 namespace Ui {
 class SubWindow;
@@ -19,12 +20,14 @@ public:
     GraphView* getGraphView();
     void loadGraph(QString filename);
     void saveGraph(QString filename);
+    Graph* getGraph();
     
 private:
     Ui::SubWindow *ui;
     GraphView* graphView;
-    int getNodeNumber(std::string str);
-    Node* getNode(std::string str);
+    //int getNodeNumber(std::string str);
+    //Node* getNode(std::string str);
+    Graph* graph;
 };
 
 #endif // SUBWINDOW_H

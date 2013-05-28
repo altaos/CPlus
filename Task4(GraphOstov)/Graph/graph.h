@@ -25,7 +25,7 @@ public:
     void setBeginNodeNumber(int number);
     int findNode(int number);
     int getNodeCount();
-    Graph* getOstovTree();
+    Graph* getOstovTree(Graph* startGraph);
 };
 
 #endif // GRAPH_H
