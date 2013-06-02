@@ -52,6 +52,19 @@ int Graph::findNode(int number)
     return -1;
 }
 
+Node *Graph::findNode(QPoint point)
+{
+    for(int i = 0; i < nodes->size(); i++)
+    {
+        if((point.x() + 10 < (nodes->at(i)->getCoord()).x() || point.x() - 10 > (nodes->at(i)->getCoord()).x()) && (point.y() + 10 < (nodes->at(i)->getCoord()).y() || point.y() - 10 > (nodes->at(i)->getCoord()).y()))
+        {
+            return nodes->at(i);
+        }
+    }
+
+    return NULL;
+}
+
 int Graph::getNodeCount()
 {
     return nodes->size();

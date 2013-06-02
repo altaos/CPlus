@@ -18,6 +18,7 @@ public:
 
     QGraphicsScene* getScene();
     void paintGraph(Graph* graph);
+    void paintLine(QPoint p1, QPoint p2);
 };
 
 #endif // GRAPHVIEW_H

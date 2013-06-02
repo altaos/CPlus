@@ -46,6 +46,7 @@
     <property name="title">
      <string>Файл</string>
     </property>
+    <addaction name="create"/>
     <addaction name="openFile"/>
     <addaction name="saveFile"/>
    </widget>
@@ -54,6 +55,9 @@
      <string>Граф</string>
     </property>
     <addaction name="findOstovTree"/>
+    <addaction name="addNode"/>
+    <addaction name="addEdge"/>
+    <addaction name="nothing"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menuGraph"/>
@@ -72,6 +76,26 @@
   <action name="findOstovTree">
    <property name="text">
     <string>Найти остовное дерево</string>
+   </property>
+  </action>
+  <action name="addNode">
+   <property name="text">
+    <string>Добавить вершину</string>
+   </property>
+  </action>
+  <action name="addEdge">
+   <property name="text">
+    <string>Добавить ребро</string>
+   </property>
+  </action>
+  <action name="nothing">
+   <property name="text">
+    <string>Не выполнять действий</string>
+   </property>
+  </action>
+  <action name="create">
+   <property name="text">
+    <string>Создать</string>
    </property>
   </action>
  </widget>

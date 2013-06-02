@@ -1,11 +1,14 @@
 #include "subwindow.h"
 #include "ui_subwindow.h"
 
-SubWindow::SubWindow(QWidget *parent) :
+SubWindow::SubWindow(int* action, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SubWindow)
 {
     ui->setupUi(this);
+    graph = new Graph();
+    drawing = false;
+    current_action = action;
     graphView = new GraphView();
     ui->graphicsView->setScene(graphView->getScene());
 }
@@ -43,24 +46,62 @@ void SubWindow::setGraph(Graph *&graph)
     this->graph = graph;
 }
 
-//int SubWindow::getNodeNumber(std::string str)
-//{
-//    int pos = str.find_first_of('-', 0);
-//    int num = atoi(str.substr(0, pos).c_str());
-//    return num;
-//}
+void SubWindow::Paint()
+{
+    graphView->getScene()->clear();
+    if(drawing)
+    {
+        graphView->paintGraph(graph);
+        graphView->paintLine(n1->getCoord(), tmpPoint);
+    }
+    else
+    {
+        graphView->paintGraph(graph);
+    }
+}
 
-//Node* SubWindow::getNode(std::string str)
-//{
-//    QPoint point;
-//    int pos = str.find_first_of('-', 0);
-//    int num = atoi(str.substr(0, pos).c_str());
-//    int pos_x = str.find_first_of('-', ++pos);
-//    point.setX(atoi(str.substr(pos, pos_x).c_str()));
-//    int pos_y = str.find_first_of(':', ++pos_x);
-//    point.setY(atoi(str.substr(pos_x, pos_y).c_str()));
-//    Node* node = new Node(num, point);
+void SubWindow::mousePressEvent(QMouseEvent *e)
+{
+    if(*current_action == 1)
+    {
+        Node* node = new Node(graph->getNodeCount(), e->pos());
+        graph->addNode(node);
+        Paint();
+    }
 
-//    return node;
-//}
+    if(*current_action == 2)
+    {
+        n1 = graph->findNode(e->pos());
+        tmpPoint = e->pos();
+        if(n1)
+            drawing = true;
+        Paint();
+    }
+}
+
+void SubWindow::mouseReleaseEvent(QMouseEvent *e)
+{
+    if(*current_action == 1 && drawing)
+    {
+        drawing = false;
+        tmpPoint = e->pos();
+        n2 = graph->findNode(tmpPoint);
+
+        if(n2)
+        {
+            n1->addConnectedNode(n2);
+            n2->addConnectedNode(n1);
+        }
+        Paint();
+    }
+}
+
+void SubWindow::mouseMoveEvent(QMouseEvent *e)
+{
+    if(*current_action == 2 && drawing)
+    {
+        tmpPoint = e->pos();
+        Paint();
+    }
+}
 

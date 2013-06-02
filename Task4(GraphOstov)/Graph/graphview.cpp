@@ -48,3 +48,8 @@ void GraphView::paintGraph(Graph* graph)
         //QGraphicsTextItem text = scene->addText((QString)node1->getNumber(), *font);
     }
 }
+
+void GraphView::paintLine(QPoint p1, QPoint p2)
+{
+    scene->addLine(p1.x(), p1.y(), p2.x(),  p2.y(), *penEdge);
+}

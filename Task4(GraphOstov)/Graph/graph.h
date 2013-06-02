@@ -22,6 +22,7 @@ public:
 
     Node* getNode(int index);
     int findNode(int number);
+    Node* findNode(QPoint point);
     int getNodeCount();
     Graph* getOstovTree();
 };
