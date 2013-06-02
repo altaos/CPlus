@@ -15,9 +15,9 @@ Node::Node(int number, QPoint coord)
 
 Node::Node(Node &node)
 {
-    this->number = node.number;
+    this->number = node.getNumber();
     this->coord = node.getCoord();
-    this->isVisited = node.IsVisited();
+    this->isVisited = false;
     this->connected_nodes = new std::vector<Node*>();
 }
 
@@ -88,10 +88,15 @@ bool Node::IsVisited()
     return isVisited;
 }
 
+void Node::setVisited(bool v)
+{
+    isVisited = v;
+}
+
 void Node::Visit()
 {
     isVisited = true;
-    for(int i = 0; i < connected_nodes->size();)
+    for(auto i = 0; i < connected_nodes->size();)
     {
         Node* node = connected_nodes->at(i);
         if(node->IsVisited())

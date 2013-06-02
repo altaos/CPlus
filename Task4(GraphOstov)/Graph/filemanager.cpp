@@ -85,7 +85,6 @@ Graph* FileManager::open(QString filename)
         }
 
         file.close();
-        graph->setBeginNodeNumber(++min_number);
     }
 
     return graph;

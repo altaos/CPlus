@@ -38,6 +38,11 @@ Graph *SubWindow::getGraph()
     return graph;
 }
 
+void SubWindow::setGraph(Graph *&graph)
+{
+    this->graph = graph;
+}
+
 //int SubWindow::getNodeNumber(std::string str)
 //{
 //    int pos = str.find_first_of('-', 0);

@@ -7,9 +7,10 @@
 class Graph
 {
 private:
-    int numberOfCurrentNode;
-
     std::vector<Node*>* nodes;
+
+    void Visite(Node*& node, Graph*& newGraph);
+    void Reset();
 
 public:
     Graph();
@@ -20,12 +21,9 @@ public:
     void deleteNode(std::vector<Node*>::iterator it);
 
     Node* getNode(int index);
-
-    int getNextNodeNumber();
-    void setBeginNodeNumber(int number);
     int findNode(int number);
     int getNodeCount();
-    Graph* getOstovTree(Graph* startGraph);
+    Graph* getOstovTree();
 };
 
 #endif // GRAPH_H

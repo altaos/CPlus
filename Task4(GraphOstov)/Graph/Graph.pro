@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     graph.cpp \
     graphview.cpp \
     filemanager.cpp \
-    subwindow.cpp
+    subwindow.cpp \
+    logger.cpp
 
 HEADERS  += mainwindow.h \
     node.h \
     graph.h \
     graphview.h \
     filemanager.h \
-    subwindow.h
+    subwindow.h \
+    logger.h
 
 FORMS    += mainwindow.ui \
     subwindow.ui

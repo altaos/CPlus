@@ -21,6 +21,7 @@ public:
     void loadGraph(QString filename);
     void saveGraph(QString filename);
     Graph* getGraph();
+    void setGraph(Graph*& graph);
     
 private:
     Ui::SubWindow *ui;

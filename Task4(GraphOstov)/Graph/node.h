@@ -24,6 +24,7 @@ public:
     QPoint getCoord();
     void setCoord(QPoint coord);
     bool IsVisited();
+    void setVisited(bool v);
     void Visit();
     int getRadius();
     int getConnectedNodesCount();
